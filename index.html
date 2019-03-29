@@ -359,27 +359,23 @@ hr {
 	document.getElementById("download_button").onclick = function() {
 		// document.getElementById("pre_download").style.display = "none";
 		document.getElementById("post_download").style.display = "block";
-		document.getElementById("post_download").innerHTML = getMobileOperatingSystem();
 		return false;
 	};
 	
-	function getMobileOperatingSystem() {
-  		var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+	var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-      		// Windows Phone must come first because its UA also contains "Android"
-    		if (/windows phone/i.test(userAgent)) {
-        		return "Windows";
-    		}
-
-    		if (/android/i.test(userAgent)) {
-        		return "Android";
-    		}
-
-    		if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        		return "iOS";
-    		}
-
-    		return "unknown";
+	// Windows Phone must come first because its UA also contains "Android"
+	if (/windows phone/i.test(userAgent)) {
+		document.getElementById("platform").innerHTML = "Windows";
+	}
+	else if (/android/i.test(userAgent)) {
+		document.getElementById("platform").innerHTML =  "Android";
+	}
+	else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+		document.getElementById("platform").innerHTML = "iOS";
+	}
+	else {
+		document.getElementById("platform").innerHTML = "unknown";
 	}
 	
 })();
