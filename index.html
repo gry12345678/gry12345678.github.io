@@ -334,6 +334,9 @@ hr {
 					<div class="footer">
 						<table border="0" cellpadding="0" cellspacing="0">
 							<tr>
+								<td id="platform" class="content-block"></td>
+							</tr>
+							<tr>
 								<td class="content-block"><span class="apple-link">Gryphon Secure Inc.</span></td>
 							</tr>
 							<tr>
@@ -356,8 +359,29 @@ hr {
 	document.getElementById("download_button").onclick = function() {
 		// document.getElementById("pre_download").style.display = "none";
 		document.getElementById("post_download").style.display = "block";
+		document.getElementById("post_download").innerHTML = getMobileOperatingSystem();
 		return false;
+	};
+	
+	function getMobileOperatingSystem() {
+  		var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      		// Windows Phone must come first because its UA also contains "Android"
+    		if (/windows phone/i.test(userAgent)) {
+        		return "Windows";
+    		}
+
+    		if (/android/i.test(userAgent)) {
+        		return "Android";
+    		}
+
+    		if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        		return "iOS";
+    		}
+
+    		return "unknown";
 	}
+	
 })();
 </script>
 	
