@@ -363,7 +363,7 @@ hr {
 		document.getElementById("platform").innerHTML = "Please monitor the download progress in notification drawer and press on the download notification after download is complete to install Assure.";
 	}
 	else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-		document.getElementById("platform").innerHTML = "Please close this page to confirm the installation of the Assure application. The Assure application icon may appear on any of the home screens.";
+		document.getElementById("platform").innerHTML = "Please close this page to confirm the installation of the Assure application.<br><br>The Assure application icon may appear on any of the home screens.";
 	}
 	else {
 		document.getElementById("platform").innerHTML = "";
