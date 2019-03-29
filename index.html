@@ -318,9 +318,7 @@ hr {
 							<td class="wrapper">
 								<table border="0" cellpadding="0" cellspacing="0">
 									<tr>
-										<td>
-											<p>Please confirm the installation dialog, then press your Home button to see the installation progress.
-											Note that the app's icon might appear on any of your home screens.</p>
+										<td id="platform">
 										</td>
 									</tr>
 								</table>
@@ -333,9 +331,6 @@ hr {
 					<!-- START FOOTER -->
 					<div class="footer">
 						<table border="0" cellpadding="0" cellspacing="0">
-							<tr>
-								<td id="platform" class="content-block"></td>
-							</tr>
 							<tr>
 								<td class="content-block"><span class="apple-link">Gryphon Secure Inc.</span></td>
 							</tr>
@@ -364,18 +359,14 @@ hr {
 	
 	var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-	// Windows Phone must come first because its UA also contains "Android"
-	if (/windows phone/i.test(userAgent)) {
-		document.getElementById("platform").innerHTML = "Windows";
-	}
-	else if (/android/i.test(userAgent)) {
-		document.getElementById("platform").innerHTML =  "Android";
+	if (/android/i.test(userAgent)) {
+		document.getElementById("platform").innerHTML = "Please monitor the download progress in notification drawer and press on the download notification after download is complete to install Assure.";
 	}
 	else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-		document.getElementById("platform").innerHTML = "iOS";
+		document.getElementById("platform").innerHTML = "Please close this page to confirm the installation of the Assure application. The Assure application icon may appear on any of the home screens.";
 	}
 	else {
-		document.getElementById("platform").innerHTML = "unknown";
+		document.getElementById("platform").innerHTML = "";
 	}
 	
 })();
